@@ -25,7 +25,7 @@ class CalculatorTest {
     * */
 
     @Test
-    void get_biggest_block_that_fits_in_size_50() {
+    void get_biggest_block_that_fits_in_size_50() throws NoComponentException {
         Calculator calculator = new Calculator();
 
         int remainingHeight = 50;
@@ -37,7 +37,7 @@ class CalculatorTest {
     }
 
     @Test
-    void given_remaining_height_80_return_component_75() {
+    void given_remaining_height_80_return_component_75() throws NoComponentException {
         Calculator calculator = new Calculator();
 
         int remainingHeight = 80;
@@ -50,7 +50,7 @@ class CalculatorTest {
 
 
     @Test
-    void given_remaining_height_110_return_component_100() {
+    void given_remaining_height_110_return_component_100() throws NoComponentException {
         Calculator calculator = new Calculator();
 
         int remainingHeight = 110;
@@ -59,6 +59,27 @@ class CalculatorTest {
 
         Assertions.assertNotNull(component);
         Assertions.assertEquals(Integer.valueOf(100), component.getLength());
+    }
+
+    @Test
+    void given_remaining_height_200_return_component_120() throws NoComponentException {
+        Calculator calculator = new Calculator();
+
+        int remainingHeight = 200;
+
+        Component component = calculator.getNextBlock(remainingHeight);
+
+        Assertions.assertNotNull(component);
+        Assertions.assertEquals(Integer.valueOf(120), component.getLength());
+    }
+
+    @Test
+    void given_remaining_height_40_throw_no_component_exception() {
+        Calculator calculator = new Calculator();
+
+        int remainingHeight = 40;
+
+        Assertions.assertThrows(NoComponentException.class, () -> calculator.getNextBlock(remainingHeight));
     }
 
 }
