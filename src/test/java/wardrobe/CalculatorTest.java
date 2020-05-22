@@ -48,4 +48,17 @@ class CalculatorTest {
         Assertions.assertEquals(Integer.valueOf(75), component.getLength());
     }
 
+
+    @Test
+    void given_remaining_height_110_return_component_100() {
+        Calculator calculator = new Calculator();
+
+        int remainingHeight = 110;
+
+        Component component = calculator.getNextBlock(remainingHeight);
+
+        Assertions.assertNotNull(component);
+        Assertions.assertEquals(Integer.valueOf(100), component.getLength());
+    }
+
 }
