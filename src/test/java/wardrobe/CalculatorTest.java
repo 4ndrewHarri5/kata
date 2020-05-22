@@ -25,7 +25,7 @@ class CalculatorTest {
     * */
 
     @Test
-    void get_biggest_block_that_fits_in_size() {
+    void get_biggest_block_that_fits_in_size_50() {
         Calculator calculator = new Calculator();
 
         int remainingHeight = 50;
@@ -33,6 +33,19 @@ class CalculatorTest {
         Component component = calculator.getNextBlock(remainingHeight);
 
         Assertions.assertNotNull(component);
-
+        Assertions.assertEquals(Integer.valueOf(50), component.getLength());
     }
+
+    @Test
+    void given_remaining_height_80_return_component_75() {
+        Calculator calculator = new Calculator();
+
+        int remainingHeight = 80;
+
+        Component component = calculator.getNextBlock(remainingHeight);
+
+        Assertions.assertNotNull(component);
+        Assertions.assertEquals(Integer.valueOf(75), component.getLength());
+    }
+
 }
