@@ -3,6 +3,8 @@ package wardrobe;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 class CalculatorTest {
@@ -82,4 +84,18 @@ class CalculatorTest {
         Assertions.assertThrows(NoComponentException.class, () -> calculator.getNextBlock(remainingHeight));
     }
 
+
+    @Test
+    void get_remaining_height() {
+        Calculator calculator = new Calculator();
+
+        List<Component> components = new ArrayList<>();
+        components.add(new WardrobeComponent(50, 59));
+
+        Integer maxHeight = 100;
+
+        int remainingHeight = calculator.calculateRemainingHeight(maxHeight, components);
+        Assertions.assertEquals(50, remainingHeight);
+
+    }
 }

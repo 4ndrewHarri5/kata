@@ -1,5 +1,8 @@
 package wardrobe;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Calculator {
 
     public Component getNextBlock(int remainingHeight) throws NoComponentException {
@@ -13,5 +16,14 @@ public class Calculator {
             return new WardrobeComponent(50, 59);
         }
         throw new NoComponentException("no component can fit the remaining space");
+    }
+
+
+    public int calculateRemainingHeight(Integer maxHeight, List<Component> components) {
+        int remainingHeight = maxHeight;
+        for (Component c : components){
+            remainingHeight -= c.getLength();
+        }
+        return remainingHeight;
     }
 }
